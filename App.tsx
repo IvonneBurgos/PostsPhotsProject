@@ -5,7 +5,7 @@
  * @format
  */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import type {PropsWithChildren} from 'react';
 import {
   SafeAreaView,
@@ -16,6 +16,8 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
+
+import getPosts from './src/presenter/PostPresenter';
 
 import {
   Colors,
@@ -61,6 +63,10 @@ function App(): React.JSX.Element {
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
+
+  useEffect(()=>{
+    getPosts()
+  },[])
 
   return (
     <SafeAreaView style={backgroundStyle}>

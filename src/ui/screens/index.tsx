@@ -9,41 +9,38 @@ import PostFooter from "../molecules/postFooter";
 
 const renderPosts = ({ item }: {item:Post})=> {
     return (
-        <>
-            <PostHeader avatar={item.avatar} username={item.name} location={item.location}></PostHeader>
+        <View style={styles.container} key={item.id}>
+            <PostHeader avatar={item.avatar} username={item.name} location={item.location}/>
             <Image
-                style={styles.image}
-                width= {640}
-                height={480}
-                resizeMode='cover'
-                source={{
-                uri: item.image,
+            style={styles.image}
+            width= {640}
+            height={480}
+            resizeMode='cover'
+            source={{
+            uri: item.image + '?v=' + item.id,
             }} />
-            <PostActions likes={item.likes} liked={item.liked} comments={item.comments} saved={item.saved}  />
+            <PostActions likes={item.likes} liked={item.liked} comments={item.comments} saved={item.saved}/>
             <PostFooter name={item.name} description={item.description} createdAt={item.createdAt} />
-        </>
+        </View>
     )
 }
 
 const PostScreen = () => {
-    const {posts , loading} = usePost()
-
+    const {posts, loading} = usePostContext()
     return (
-
         <View style={{flex:1}}>
-            {!loading && <FlatList data={posts} renderItem={renderPosts} keyExtractor={(item:Post) => item.id}/>}
+            {!loading && <FlatList data={posts} renderItem={renderPosts} keyExtractor={(item:Post) => item.id} viewabilityConfig={{waitForInteraction: true, viewAreaCoveragePercentThreshold: 50}}/> }
         </View>
-        
     )
-    
 }
 
 const styles = StyleSheet.create({
-
+    container:{
+        paddingBottom: 16
+    },
     image: {
         width:'100%',
         height: 480, 
-
     },
 });
 

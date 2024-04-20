@@ -24,7 +24,7 @@ export default PostProvider;
 export const usePostContext = () => {
     const context = useContext(PostContext);
     if (!context) {
-        throw new Error('useAuthContext debe ser utilizado dentro de un AuthProvider');
+        throw new Error('usePostContext debe ser utilizado dentro de un PostProvider');
     }
     return context;
 };

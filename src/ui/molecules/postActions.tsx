@@ -9,21 +9,19 @@ type PostActionsType = {
 }
 
 const PostActions = (postActions: PostActionsType) => {
-
     const {likes,liked,saved,comments} = postActions
-
 
     return (
         <>
         <View style={styles.container}>
             <View style={styles.left}>
-                {liked ? <Image source={Images.likeFilled}/>: <Image source={Images.like}/>}
-                <Image source={Images.comment}/>
-                <Image source={Images.share}/>
+                {liked ? <Image style={[styles.image,{tintColor:'red'}]} source={Images.likeFilled}/>: <Image style={styles.image} source={Images.like}/>}
+                <Image style={styles.image} source={Images.comment}/>
+                <Image style={styles.image} source={Images.share}/>
             </View>
 
             <View style={styles.right}>
-            {saved ? <Image source={Images.bookmarkFilled}/>: <Image source={Images.bookmark}/>}
+            {saved ? <Image style={styles.image} source={Images.bookmarkFilled}/>: <Image style={styles.image} source={Images.bookmark}/>}
             </View>
         </View>
         <View style={styles.containerCounters}>
@@ -38,11 +36,15 @@ const styles = StyleSheet.create({
     container: {
         flexDirection: 'row', 
         justifyContent: 'space-between', 
-        padding: 10, 
+        paddingTop:10,
+        paddingLeft:10
     },
     containerCounters: {
         flexDirection: 'row', 
         paddingLeft: 10,
+    },
+    image:{
+        marginRight: 8,
     },
     left: {
         flexDirection: 'row',
@@ -53,7 +55,8 @@ const styles = StyleSheet.create({
     },
     counterText:{
         fontSize: 12,
-        paddingRight:8
+        paddingRight:8,
+        color: 'black'
     }
 });
 

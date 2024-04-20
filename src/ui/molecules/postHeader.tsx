@@ -13,11 +13,12 @@ const PostHeader = (postHeader: PostHeaderType) => {
         <View style={styles.container}>
             <Image
             style={styles.image}
-            width={20}
-            height={20}
+            width={30}
+            height={30}
             source={{
-            uri: avatar,
-            }} />
+            uri: 'https://picsum.photos/30/30',
+            }}
+            onError={(error) => console.log(error.nativeEvent)} />
             <View style={styles.textContainer}>
                 <Text style={styles.text}>{username}</Text>
                 <Text style={styles.text}>{location}</Text>
@@ -35,15 +36,16 @@ const styles = StyleSheet.create({
         padding: 10, 
     },
     image: {
-        width: 20, 
-        height: 20, 
-        borderRadius: 20,
+        width: 30, 
+        height: 30, 
+        borderRadius: 30,
+        marginRight: 8
     },
     textContainer: {
         justifyContent: 'center', 
     },
     text: {
-        fontSize: 10,
+        fontSize: 12,
     },
 });
 

@@ -22,12 +22,12 @@ const PostFooter = (postFooter: PostFooterType) => {
         <>
         <View style={styles.container}>
             <View style={styles.footerText}>
-                <Text style={styles.text}>{`${name}: `}</Text>
+                <Text style={[styles.text,styles.boldText]}>{`${name}: `}</Text>
                 <Text style={styles.text}>{description}</Text>
             </View>
         </View>
         <View style={styles.containerDescription}>
-            <Text style={styles.text}>{dateFormated}</Text>
+            <Text style={styles.subText}>{dateFormated}</Text>
         </View>
         </>
     )
@@ -37,7 +37,8 @@ const styles = StyleSheet.create({
     container: {
         flexDirection: 'row', 
         justifyContent: 'space-between', 
-        padding: 10, 
+        paddingTop: 10, 
+        paddingLeft: 10
     },
     containerDescription: { 
         paddingLeft: 10,
@@ -45,8 +46,15 @@ const styles = StyleSheet.create({
     footerText: {
         flexDirection: 'row',
     },
+    boldText:{
+        fontWeight:"600",
+        color:'black'
+    },
     text:{
         fontSize: 12,
+    },
+    subText:{
+        fontSize: 10
     }
 });
 

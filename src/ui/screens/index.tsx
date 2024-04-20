@@ -4,9 +4,10 @@ import { usePostContext } from "../../data/PostProvider";
 import { FlatList, Image, StyleSheet, View } from "react-native";
 import { Post } from "../../domain/Post";
 import usePost from "../../data/usePost";
+import PostActions from "../molecules/postActions";
+import PostFooter from "../molecules/postFooter";
 
 const renderPosts = ({ item }: {item:Post})=> {
-    
     return (
         <>
             <PostHeader avatar={item.avatar} username={item.name} location={item.location}></PostHeader>
@@ -18,7 +19,8 @@ const renderPosts = ({ item }: {item:Post})=> {
                 source={{
                 uri: item.image,
             }} />
-            
+            <PostActions likes={item.likes} liked={item.liked} comments={item.comments} saved={item.saved}  />
+            <PostFooter name={item.name} description={item.description} createdAt={item.createdAt} />
         </>
     )
 }

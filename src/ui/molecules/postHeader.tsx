@@ -1,14 +1,14 @@
 import { Image, StyleSheet, Text, View } from "react-native"
 
-
 type PostHeaderType = {
     avatar : string
     username: string
     location: string
 }
 
-const PostHeader = (post: PostHeaderType) => {
-    const { avatar, username, location} = post
+const PostHeader = (postHeader: PostHeaderType) => {
+    const { avatar, username, location} = postHeader
+
     return (
         <View style={styles.container}>
             <Image
@@ -16,7 +16,7 @@ const PostHeader = (post: PostHeaderType) => {
             width={20}
             height={20}
             source={{
-            uri: 'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/388.jpg',
+            uri: avatar,
             }} />
             <View style={styles.textContainer}>
                 <Text style={styles.text}>{username}</Text>
@@ -35,10 +35,9 @@ const styles = StyleSheet.create({
         padding: 10, 
     },
     image: {
-        width: 25, 
-        height: 25, 
-        borderRadius: 25,
-        marginRight: 10, 
+        width: 20, 
+        height: 20, 
+        borderRadius: 20,
     },
     textContainer: {
         justifyContent: 'center', 

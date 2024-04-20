@@ -10,13 +10,16 @@ const PostHeader = (postHeader: PostHeaderType) => {
     const { avatar, username, location} = postHeader
 
     return (
+        // Se colocó una imagen genérica porque la imagen del servicio da error 403.
         <View style={styles.container}>
+            
             <Image
             style={styles.image}
             width={30}
             height={30}
             source={{
             uri: 'https://picsum.photos/30/30',
+            //uri:avatar
             }}
             onError={(error) => console.log(error.nativeEvent)} />
             <View style={styles.textContainer}>
